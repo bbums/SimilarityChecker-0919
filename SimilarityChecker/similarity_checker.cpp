@@ -1,4 +1,5 @@
 #include <string>
+#include <algorithm>
 #define ABS(a) (((a) > 0) ? (a) : (-(a)))
 
 class SimilarityChecker {
@@ -12,8 +13,7 @@ public:
 	int getPartScore(const std::string& str1, const std::string& str2)
 	{
 		int gap = getGap(str1, str2);
-		int shorter_length = 
-			str1.length() < str2.length() ? str1.length() : str2.length();
+		int shorter_length = std::min(str1.length(), str2.length());
 		return 60 - 60 * gap / shorter_length;
 	}
 
